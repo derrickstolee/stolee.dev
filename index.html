@@ -1,14 +1,444 @@
 <html>
-    <head>
-	    <title>
-		    stolee.dev - Developer homepage of Derrick Stolee
-            </title>
-    </head>
-    <body>
-        <center>
-            <b>
-                stolee.dev : coming soon
-            </b>
-        </center>
-    </body>
+
+<head>
+    <title>
+        stolee.dev - Developer homepage of Derrick Stolee
+    </title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+</head>
+
+<body>
+    <h1>
+        stolee.dev - Developer homepage of Derrick Stolee
+    </h1>
+
+    <p class="bio">
+        I'm a software engineer working at Microsoft on <a href="https://github.com/git/git">Git</a>
+        and <a href="https://github.com/microsoft/vfsforgit">VFS for Git</a>. This is my personal
+        webpage, which includes links to things I've done throughout my entire career. Opinions
+        are my own.
+    </p>
+
+    <ul class="menu">
+        <li>
+            <a href="#dev-articles">Articles</a>
+        </li>
+        <li>
+            <a href="#dev-presentations">Presentations</a>
+        </li>
+        <li>
+            <a href="#research-papers">Research Papers</a>
+        </li>
+    </ul>
+
+    <br />
+
+    <div class="sectionheader" id="dev-articles">Articles (for Developers)</div>
+    <ul class="list">
+        <li>
+            <div class="link"><a href="https://devblogs.microsoft.com/devops/super-charging-the-git-commit-graph-iv-bloom-filters/">
+                    Supercharging the Git Commit Graph IV: Bloom Filters</a></div>
+            <p>
+                <i>Azure DevOps Blog</i>, 2018
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://devblogs.microsoft.com/devops/supercharging-the-git-commit-graph-iii-generations/">
+                    Supercharging the Git Commit Graph III: Generations and Graph Algorithms</a></div>
+            <p>
+                <i>Azure DevOps Blog</i>, 2018
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://devblogs.microsoft.com/devops/supercharging-the-git-commit-graph-ii-file-format/">
+                    Supercharging the Git Commit Graph II: File Format</a></div>
+            <p>
+                <i>Azure DevOps Blog</i>, 2018
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://devblogs.microsoft.com/devops/supercharging-the-git-commit-graph/">
+                    Supercharging the Git Commit Graph</a></div>
+            <p>
+                <i>Azure DevOps Blog</i>, 2018
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://devblogs.microsoft.com/devops/how-to-contribute-to-git-on-windows/">
+                    How to Contribute to Git (on Windows)</a></div>
+            <p>
+                <i>Azure DevOps Blog</i>, 2018
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://devblogs.microsoft.com/devops/microsofts-performance-contributions-to-git-in-2017/">
+                    Microsoft's Performance Contributions to Git in 2017</a></div>
+            <p>
+                <i>Azure DevOps Blog</i>, 2018
+            </p>
+        </li>
+    </ul>
+    <div class="sectionheader" id="dev-presentations">Presentations (for Developers)</div>
+    <ul class="list">
+        <li>
+            <div class="link"><a href="https://www.youtube.com/watch?v=oOMzi983Qmw">Building Git for Windows</a></div>
+            <p>
+                with Johannes Schindelin, <i>Git Merge 2018</i>.
+            </p>
+        </li>
+    </ul>
+
+    <div class="sectionheader" id="git-features">Git Features</div>
+    <ul class="list">
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/5d826e972970a784bd7a7bdf587512510097b8c7...99dbbfa8ddbba2b620965d026d4ec199b8837a6f">
+                    "Sparse" push algorithm</a></div>
+            <p>
+                Speeds up <code>git push</code> for developers working in a small cone of a large repo.
+                <i>Git v2.21.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/2d3b1c576c85b7f5db1f418907af00ab88e0c303...561b583749b7428f1790f03164d0d0e75be71d7b">
+                    Generation-number aware topological sort algorithm</a></div>
+            <p>
+                Significantly speeds up <code>git log --graph</code> calls when the commit-graph feature is enabled.
+                <i>Git v2.20.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/6a22d521260f86dff8fe6f23ab329cebb62ba4f0...66ec0390e75406aa9f9295577052b9ec06d3a169">
+                    <code>git multi-pack-index verify</code> subcommand</a></div>
+            <p>
+                Verify the multi-pack-index file for corruption.
+                <i>Git v2.20.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/dade47c06cf849b0ca180a8e6383b55ea6f75812...6cc017431c1c48f80d1c6512fdcc9866cf4b7f55">
+                    Rewrite commit walking code</a></div>
+            <p>
+                Collect and reorganize commit walking code, and improve several algorithms in the process.
+                <i>Git v2.20.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/53f9a3e157dbbc901a02ac2c73346d375e24978c...6a22d521260f86dff8fe6f23ab329cebb62ba4f0">
+                    Multi-pack-index</a></div>
+            <p>
+                Create a new file to index objects across multiple pack-files.
+                <i>Git v2.20.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/ed843436dd4924c10669820cc73daf50f0b4dabd...d4f65b8d141e041eb5e558cd9e763873e29863b9">
+                <code>git commit-graph verify</code> subcommand and <code>gc.writeCommitGraph</code> config option</a></div>
+            <p>
+                Verify the commit-graph file for corruption, and write the file automatically during repo maintenance.
+                <i>Git v2.20.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/279ffad17dcc3b72aa7cb5c73fb7aa8eddeed9da...1472978ec670e57913836dcc98ba9cf560d94a1c">
+                Generation numbers</a></div>
+            <p>
+                Compute generation numbers in the commit-graph file and use them in some commit walks.
+                <i>Git v2.19.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/626fd982a3ead1b0aae26c242fbabaaaaf4b6062...7547b95b4fbb8591726b1d9381c176cc27fc6aea">
+                Commit-graph</a></div>
+            <p>
+                Create a new data structure and file format to store a compact representation of the commit history.
+                <i>Git v2.18.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="https://github.com/git/git/compare/6867272d5b5615bd74ec97bf35b4c4a8d9fe3a51...0e87b85683df145007862d23b5f0773368d66464">
+                Speed up abbreviation algorithms</a></div>
+            <p>
+                Significantly improve the mechanism for computing the shortest unambiguous abbreviation of an object ID.
+                <i>Git v2.17.0</i>
+            </p>
+        </li>
+    </ul>
+
+    <div class="sectionheader" id="research-papers">Research Papers</div>
+    <ul class="list">
+        <li>
+            <div class="link"><a href="#">Ramsey numbers for partially-ordered sets</a></div>
+            <p>
+                C. Cox, D. Stolee, <i>Order</i>, 2017.
+            </p>
+        </li>
+        <li>
+            <div class="link"><a href="">$(4,2)$-choosability of planar graphs with forbidden structures</a></div>
+            <p>
+                Z. Berikkyzy, C. Cox, M. Dairyko, K. Hogenson, M. Kumbhat, B. Lidick&yacute;, K. Messerschmidt, K.
+                Moss, K. Nowak, K. F. Palmowski, D. Stolee,
+                <i></i>Graphs and Combinatorics</i>
+                2018.
+            </p>
+        </li>
+
+        <li>
+            <div class="link"><a href="">I,F-Partitions of sparse graphs</a></div>
+            <p>
+                A. Brandt, M. Ferrara, M. Kumbhat, S. Loeb, D. Stolee, M. Yancey,
+                <i></i>European Journal of Combinatorics</i>
+                2017.
+            </p>
+        </li>
+
+        <li>
+            <div class="link"><a href="">On the Strong Chromatic Index of Sparse Graphs</a></div>
+            <p>
+                P. DeOrsey, J. Diemunsch, M. Ferrara, N. Graber, G. G. Hartke, S. Jahanebkam, B. Lidick&yacute;, L.
+                Nelsen, D. Stolee, E. Sullivan,
+            </p>
+        </li>
+
+        <li>
+            <div class="link"><a href="">Color-blind index in graphs of very low degree</a></div>
+            <p>
+                J. Diemunsch, N. Graber, L. Kramer, V. Larsen, L.M. Nelsen, L.L. Nelsen, D. Sigler, D. Stolee, C. Suer,
+                <i></i>Discrete Applied Combinatorics</i>
+                2017.
+            </p>
+        </li>
+
+        <li>
+            <div class="link"><a href="">Automated Discharging Arguments for Density Problems in Grids </a></div>
+            <p>
+                D. Stolee,
+                <i>preprint</i>,
+                2015.
+            </p>
+        </li>
+
+        <li>
+            <div class="link"><a href="">Extending Precolorings to Distinguish Group Actions</a></div>
+            <p>
+                M. Ferrara, E. Gethner, S. G. Hartke, D. Stolee, P. S. Wenger,
+                <i>European Journal of Combinatorics</i>,
+                2018.
+            </p>
+        </li>
+        <!--
+        <div id="paper">
+            S. Butler, C. Erickson, L. Hogben, K. Hogenson, L. Kramer, R. L. Kramer, J. C.-H. Lin, R. R. Martin, D.
+            Stolee, N. Warnberg, and M. Young,
+            <a href="/dstolee/papers/DMWS14-RainbowAPs.pdf">Rainbow arithmetic progressions</a> submitted.<br />
+            <span class="version"><a href="/dstolee/papers/DMWS14-RainbowAPs.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1404.7232">ArXiv Version</a></span>
+        </div>
+
+
+        <div id="paper">J. M. Carraher, D. Galvin, S. G. Hartke, A. J. Radcliffe, D. Stolee, On the independence ratio
+            of distance graphs.<br />
+            <span class="version"><a href="/dstolee/papers/CGHRS14-DistanceGraphs.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1401.7183">ArXiv Version</a></span>
+            <span class="version"><a href="/dstolee/r/distance.htm">Project</a></span>
+        </div>
+
+
+
+        <div id="subheaderbar">To Appear</div>
+
+        <div id="paper">V. Borozan, M. Ferrara, S. Fujita, M. Furuya, Y. Manoussakis, Narayanan N, and D. Stolee,
+            Partitioning a graph into highly connected subgraphs,
+            to appear in <i>Journal of Graph Theory</i>.<br />
+            <span class="version"><a href="/dstolee/papers/BFFFMNS14-KProperPartition.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1401.2696">ArXiv Version</a></span>
+            <span class="version"><a href="http://onlinelibrary.wiley.com/doi/10.1002/jgt.21904/abstract;jsessionid=06B00964E13CDF412BD175EF2035872E.f04t03">Official
+                    Version</a>
+                <span class="version"><a href="/dstolee/r/kconn.htm">Project</a></span>
+        </div>
+
+
+
+
+        <div id="paper">I. Choi, B. Lidick&yacute;, D. Stolee, On Choosability with Separation of Planar Graphs with
+            Forbidden Cycles, to appear in <i>Journal of Graph Theory</i><br />
+            <span class="version"><a href="/dstolee/papers/CLS13-Choosability.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1303.2753">ArXiv Version</a></span>
+            <span class="version"><a href="http://onlinelibrary.wiley.com/doi/10.1002/jgt.21875/abstract">Official
+                    Version</a></span>
+        </div>
+
+
+
+
+        <div id="subheaderbar">2016</div>
+
+        <div id="paper">C. Cox, D. Stolee, Ordered Ramsey numbers of loose paths and matchings, <i>Discrete Mathematics</i>
+            339(2) (2016) 499-505.<br />
+            <span class="version"><a href="/dstolee/papers/CS14-ORLoosePaths.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1411.4058">arXiv Version</a></span>
+            <span class="version"><a href="http://www.sciencedirect.com/science/article/pii/S0012365X15003477">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/ordram.htm">Research Project</a></span>
+        </div>
+
+        <div id="subheaderbar">2015</div>
+
+        <div id="paper">K. G. Milans, D. Stolee, D. B. West, Ordered Ramsey Theory and Track Representations of Graphs,
+            <i>Journal of Combinatorics</i> 6(4) (2015) 445-456.<br />
+            <span class="version"><a href="/dstolee/papers/MSW13-OrderedRamsey.pdf">Web Version</a></span>
+            <span class="version"><a href="http://www.intlpress.com/site/pub/pages/journals/items/joc/content/vols/0006/0004/a003/index.html">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/ordram.htm">Research Project</a></span>
+        </div>
+
+        <div id="subheaderbar">2014</div>
+
+
+        <div id="paper">D. Stolee, Automorphism Groups and Adversarial Vertex Deletions,
+            <i>Australasian Journal of Combinatorics</i> 60(1) (2014), pp. 27-34.<br />
+            <span class="version"><a href="/dstolee/papers/Sto12-AutomGens.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1201.4367">ArXiv Version</a></span>
+            <span class="version"><a href="/dstolee/r/symdyn.htm">Research Project</a></span>
+        </div>
+
+        <div id="paper">B. Garvin, R. Tewari, D. Stolee, N. V. Vinodchandran,
+            ReachFewL = ReachUL, <i>Computational Complexity</i> 23(1) (2014), pp 85-98.
+            Conference version in <i>COCOON 2011</i>.<br />
+            <span class="version"><a href="/dstolee/papers/GSTV11-ReachFewL.pdf">Web Version</a></span>
+            <span class="version"><a href="http://link.springer.com/article/10.1007/s00037-012-0050-8">Official Version</a></span>
+            <span class="version"><a href="/dstolee/r/unamblog.htm">Research Project</a></span>
+        </div>
+
+        <div id="paper">S. G. Hartke, D. Stolee,
+            A linear programming approach to the Manickam-Mikl&oacute;s-Singhi Conjecture,
+            <i>European Journal of Combinatorics</i> 36 (2014) 53-70.<br />
+            <span class="version"><a href="/dstolee/papers/HS13-MMSConjecture.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1302.3636">ArXiv Version</a></span>
+            <span class="version"><a href="http://www.sciencedirect.com/science/article/pii/S0195669813001716">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/mms.htm">Research Project</a></span>
+        </div>
+
+
+
+
+        <div id="subheaderbar">2013</div>
+
+        <div id="paper">S. G. Hartke, D. Stolee, D. B. West, M. Yancey,
+            On extremal graphs with a given number of perfect matchings,
+            <i>Journal of Graph Theory</i>, <b>73</b>(4), 449-468.<br />
+            <span class="version"><a href="/dstolee/papers/HSWY12-ExtremalGraphs">Web Version</a></span>
+            <span class="version"><a href="http://onlinelibrary.wiley.com/doi/10.1002/jgt.21687/abstract">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/perfmat.htm">Research Project</a></span>
+        </div>
+
+        <div id="paper">M. Ferrara, E. Gethner, S. G. Hartke, D. Stolee, P. S. Wenger,
+            List Distinguishing Parameters of Trees,
+            <i>Discrete Applied Mathematics</i>,
+            <b>161</b>, 864-869.<br />
+            <span class="version"><a href="/dstolee/papers/FGHSW11-ListDistinguishingTrees.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1111.4989">ArXiv Version</a></span>
+            <span class="version"><a href="http://www.sciencedirect.com/science/article/pii/S0166218X12003836">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/listdist.htm">Research Project</a></span>
+        </div>
+
+
+
+        <div id="subheaderbar">2012</div>
+
+        <div id="paper"> S. G. Hartke, D. Stolee,
+            Uniquely <i>K<sub>r</sub></i>-saturated graphs,
+            <i>Electronic Journal of Combinatorics</i>
+            <b>19</b>(4), P6, 40 pages.<br />
+            <span class="version"><a href="/dstolee/papers/HS12-UniqueSaturation.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1203.1084">ArXiv Version</a></span>
+            <span class="version"><a href="http://www.combinatorics.org/ojs/index.php/eljc/article/view/v19i4p6/pdf">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/ukrsat.htm">Research Project</a></span>
+        </div>
+
+
+        <div id="paper"> P. Anand, H. Escuadro, R. Gera, S. G. Hartke, D. Stolee,
+            On the hardness of recognizing triangular line graphs,
+            <i>Discrete Mathematics</i>,
+            <b>312</b>, 2627-2638.<br />
+            <span class="version"><a href="/dstolee/papers/AEGHS12-TriangularLineGraphs.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1007.1178">ArXiv Version</a></span>
+            <span class="version"><a href="http://www.sciencedirect.com/science/article/pii/S0012365X11005449">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/trilline.htm">Research Project</a></span>
+        </div>
+
+
+        <div id="paper"> D. Stolee, N.V. Vinodchandran,
+            Space-efficient algorithms for reachability in surface-embedded graphs,
+            <i>27th IEEE Conference on Computational Complexity</i>,
+            326-333.<br />
+            <span class="version"><a href="/dstolee/papers/SV12-SpaceEfficient.pdf">Web Version</a></span>
+            <span class="version"><a href="http://eccc.hpi-web.de/report/2010/154/">ECCC Version</a></span>
+            <span class="version"><a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6243409&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6243409">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/reach.htm">Research Project</a></span>
+        </div>
+
+
+
+        <div id="subheaderbar">2010</div>
+
+        <div id="paper">S. G. Hartke, H. Kolb, J. Nishikawa, D. Stolee,
+            Automorphism groups of a graph and a vertex-deleted subgraph,
+            <i>Electronic Journal of Combinatorics</i> <b>17</b>(1) R134.<br />
+            <span class="version"><a href="/dstolee/papers/HKNS10-AutomorphismGroups.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/0909.3252">ArXiv Version</a></span>
+            <span class="version"><a href="http://www.combinatorics.org/ojs/index.php/eljc/article/view/v17i1r134">Official
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/symdyn.htm">Research Project</a></span>
+        </div>
+
+        <div id="paper">D. Stolee, C. Bourke, N. V. Vinodchandran,
+            A log-space algorithm for reachability in planar acyclic digraphs with few sources,
+            <i>The 25th Annual Computational Complexity Conference</i> (2010).<br />
+            <span class="version"><a href="/dstolee/papers/SBV10-LogspacePlanarDAGs.pdf">Web Version</a></span>
+            <span class="version"><a href="http://eccc.hpi-web.de/report/2009/049/">ECCC Version</a></span>
+            <span class="version"><a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5497891&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5497891">Published
+                    Version</a></span>
+            <span class="version"><a href="/dstolee/r/reach.htm">Research Project</a></span>
+        </div>
+
+
+
+        <div id="subheaderbar">Unpublished Manuscripts</div>
+
+        <div id="paper">D. Stolee,
+            Generating <i>p</i>-extremal graphs,
+            (2011).<br />
+            <span class="version"><a href="/dstolee/papers/Sto11-GeneratingPExtremal.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1105.1764">ArXiv Version</a></span>
+            <span class="version"><a href="/dstolee/r/perfmat.htm">Research Project</a></span>
+        </div>
+
+
+        <div id="paper">D. Stolee,
+            Isomorph-free generation of 2-connected graphs with applications,
+            <i>UNL-CSE Technical Report</i> #120, (2011).<br />
+            <span class="version"><a href="/dstolee/papers/Sto11-IsomorphFreeGeneration.pdf">Web Version</a></span>
+            <span class="version"><a href="http://arxiv.org/abs/1104.5261">ArXiv Version</a></span>
+            <span class="version"><a href="/dstolee/r/perfmat.htm">Research Project</a></span>
+        </div>
+
+    -->
+    </ul>
+</body>
+
 </html>
