@@ -41,6 +41,22 @@ ul.list li p {
     color: #444444;
 }
 
+ul.boxes li {
+    padding: 10;
+    margin: 10;
+    position: relative;
+    display: inline-block;
+    width: 400;
+    height: 300;
+    border: 1px solid #444444;
+}
+
+ul.boxes li p img {
+    height: 150;
+    float: right;
+    padding: 5;
+}
+
 .link {
     font-weight: bold;
 }
