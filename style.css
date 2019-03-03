@@ -15,6 +15,7 @@ ul {
     list-style-type: none;
     margin: 5;
     padding: 5;
+    display: grid;
 }
 
 ul.menu li {
@@ -30,8 +31,11 @@ ul.menu li a {
 
 ul.list li {
     padding: 2;
-    margin: 0;
+    margin: 5;
     display: block;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
 }
 
 ul.list li p {
@@ -41,20 +45,10 @@ ul.list li p {
     color: #444444;
 }
 
-ul.boxes li {
-    padding: 10;
-    margin: 10;
-    position: relative;
-    display: inline-block;
-    width: 400;
-    height: 300;
-    border: 1px solid #444444;
-}
-
-ul.boxes li p img {
-    height: 150;
-    float: right;
-    padding: 5;
+ul.list li a img {
+    width: 100;
+    float: left;
+    padding: 5 15 5 5;
 }
 
 .link {
@@ -71,5 +65,4 @@ ul.boxes li p img {
 p.bio {
     font-size: 10pt;
     font-style: italic;
-    width: 500px;
 }
