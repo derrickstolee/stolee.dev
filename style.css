@@ -20,6 +20,7 @@ ul.list {
 
 ul.menu {
     list-style-type: none;
+    display:block;
     margin: 5;
     padding: 5;
 }
@@ -61,8 +62,9 @@ ul.list li a img {
 .sectionheader {
     font-size: 16pt;
     font-weight: bold;
-    display: block;
     padding-top: 5;
+    display: block;
+    clear: both;
 }
 
 p.bio {
