@@ -27,6 +27,7 @@ ul.menu {
 ul.menu li {
     display: block;
     position: relative;
+    float: left;
     display: block;
     padding: 5px;
 }
