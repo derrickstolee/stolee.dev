@@ -11,19 +11,21 @@ a:visited {
     color: #3333cc;
 }
 
-ul {
+ul.list {
     list-style-type: none;
     margin: 5;
     padding: 5;
     display: grid;
 }
 
-ul.menu li {
-    display: inline;
-    float: left;
+ul.menu {
+    list-style-type: none;
+    margin: 5;
+    padding: 5;
 }
 
-ul.menu li a {
+ul.menu li {
+    display: block;
     position: relative;
     display: block;
     padding: 5px;
@@ -46,7 +48,7 @@ ul.list li p {
 }
 
 ul.list li a img {
-    width: 100px;
+    width: 60px;
     float: left;
     padding: 5 15 5 5;
 }
@@ -63,6 +65,16 @@ ul.list li a img {
 }
 
 p.bio {
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.title {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+p.footer {
     font-size: 10pt;
     font-style: italic;
 }
