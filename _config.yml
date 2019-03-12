@@ -1,0 +1,10 @@
+name: Stolee's Dev Blog
+description: The personal developer blog of Derrick Stolee
+url: https://stolee.dev/blog
+plugins:
+  - jekyll-feed
+theme: minima
+permalink: /posts/:year/:month/:title
+feed_items: 10
+feed_update_period: daily
+feed_update_frequency: 1
