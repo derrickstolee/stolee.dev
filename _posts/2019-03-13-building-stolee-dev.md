@@ -94,7 +94,6 @@ permalink: /posts/:year/:month/:title
 feed_items: 10
 feed_update_period: daily
 feed_update_frequency: 1
-include: _posts
 collections:
   posts:
     output: true
@@ -123,6 +122,11 @@ layout: home
 title: Stolee's Dev Blog
 ---
 ```
+
+One **super important thing** that tripped me up was that
+the files in the `_posts` folder **must** have filenames
+with the format `YYYY-MM-DD-name.md` or else Jekyll will
+ignore them!
 
 I'm sure there are ways to make this more fancy, but this
 suits me for now.
