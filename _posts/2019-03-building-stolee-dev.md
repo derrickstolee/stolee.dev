@@ -74,3 +74,33 @@ a horizontal list, even though it is a `<ul>` tag.
 Hopefully, this focus on text-based visibility also
 ensures anyone with a visual impairment can read the page.
 Please let me know if you have any trouble!
+
+# Jekyll-enabled blogging
+
+Since this page is deployed and hosted by GitHub pages,
+it is by necessity a static site. However, we can get
+a bit creative to automatically generate a blog feed based
+on a list of markdown files using Jekyll.
+
+Here is my `_config.yml` file:
+
+```
+name: Stolee's Dev Blog
+description: The personal developer blog of Derrick Stolee
+url: https://stolee.dev/blog
+plugins:
+  - jekyll-feed
+theme: minima
+permalink: /posts/:year/:month/:title
+feed_items: 10
+feed_update_period: daily
+feed_update_frequency: 1
+```
+
+Then, I have my posts written in markdown in the
+`_posts` folder automatically generate HTML pages
+for each article, an [RSS feed](https://stolee.dev/feed.xml),
+and [an HTML index of posts](https://stolee.dev/blog/).
+
+I'm sure there are ways to make this more fancy, but this
+suits me well for now.
