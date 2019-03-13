@@ -4,7 +4,6 @@ title: "Building stolee.dev"
 author: "Derrick Stolee"
 tags: [web]
 date: March 4, 2019
-excerpt_separator: <!--more-->
 ---
 
 Welcome to [stolee.dev](https://stolee.dev)! This is my

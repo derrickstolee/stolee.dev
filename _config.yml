@@ -1,6 +1,6 @@
 name: Stolee Dev Blog
 description: The personal developer blog of Derrick Stolee
-url: https://stolee.dev/blog
+url: https://stolee.dev/
 plugins:
   - jekyll-feed
 theme: minima
@@ -8,3 +8,17 @@ permalink: /posts/:year/:month/:title
 feed_items: 10
 feed_update_period: daily
 feed_update_frequency: 1
+include: _posts
+collections:
+  posts:
+    output: true
+
+permalink           : date
+paginate_path       : /page:num
+timezone: America/New_York
+
+markdown            : kramdown
+highlighter         : rouge
+lsi                 : false
+excerpt_separator   : "<!--more-->"
+incremental         : false
