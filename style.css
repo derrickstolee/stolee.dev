@@ -38,7 +38,7 @@ ul.list li {
     margin: 5;
     display: block;
     position: relative;
-    width: fit-content;
+    width: 100%;
     height: fit-content;
 }
 
