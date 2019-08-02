@@ -191,6 +191,27 @@
     <ul class="list">
         <li>
             <div class="link">
+                <a href="https://github.com/git/git/compare/93b4405ffe4ad9308740e7c1c71383bfc369baaa...5b15eb397d176c557a82e872d6b4043aa7589874">
+                    Incremental commit-graph format</a>
+            </div>
+            <p>
+                Speeds up
+                <code>git commit-graph write</code> by amortizing writes across many small writes (and few big writes).
+                <i>Git v2.23.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/9d418600f4d10dcbbfb0b5fdbc71d509e03ba719...3612c2334af8b70137a2d3f5497b1b6f4e9762a2">
+                    Multi-pack-index expire/repack</a>
+            </div>
+            <p>
+                Use the multi-pack-index to repack the object store incrementally in a highly-available environment.
+                <i>Git v2.23.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
                 <a href="https://github.com/git/git/compare/5d826e972970a784bd7a7bdf587512510097b8c7...99dbbfa8ddbba2b620965d026d4ec199b8837a6f">
                     "Sparse" push algorithm</a>
             </div>
