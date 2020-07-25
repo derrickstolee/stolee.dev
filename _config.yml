@@ -1,0 +1,26 @@
+name: Collaborating with Git
+description: How to use Git with other people
+url: https://stolee.dev/git-book
+
+plugins:
+  - jekyll-feed
+
+theme: minima
+permalink: /git-book/:title
+feed_items: 10
+feed_update_period: daily
+feed_update_frequency: 1
+
+collections:
+  posts:
+    output: true
+
+permalink           : date
+paginate_path       : /page:num
+timezone: America/New_York
+
+markdown            : kramdown
+highlighter         : rouge
+lsi                 : false
+excerpt_separator   : "<!--more-->"
+incremental         : false
