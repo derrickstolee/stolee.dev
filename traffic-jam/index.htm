@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <title>
+        Generating Traffic Jam Puzzles
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]} });
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <script src="lib/fabric.min.js"></script>
+
+    <script type="module" src="js/traffic-jam.js"></script>
+    <script type="module" src="js/jam-renderer.js"></script>
+</head>
+
+<body>
+    <div id="article-body">
+        <div style="text-align: center;">
+            <h1>Generating Traffic Jam Puzzles</h1>
+            <h2>Applied Computational Combinatorics</h2>
+        </div>
+
+        <script>
+            window.MathJax = {
+                tex: {
+                    inlineMath: [
+                        ['$', '$'],
+                        ['\\(', '\\)']
+                    ]
+                }
+            };
+        </script>
+
+        <p>
+            I've been playing a lot of <i>Rush Hour</i> with my daughter recently. It made me think about generating similar "traffic jam" puzzles. Could a computer procedurally generate interesting puzzle situations?
+        </p>
+
+        <p>
+            The puzzle below wants the white vehicle of length two to get all the way to the right wall (and then it escapes). This is the win condition we will use here.
+        </p>
+
+        <p class="figure" align="center">
+            <canvas id="example1" width="400" height="400"></canvas>
+        </p>
+
+        <script async type="module" src="figures/example1.js">
+        </script>
+
+        <p>
+            We can move vehicles forwards and backwards (in the long direction of the rectangles) but vehicles can never overlap or jump over other vehicles. Here is a solution to the puzzle above:
+        </p>
+
+        <p class="figure" align="center">
+            <canvas id="example2" width="680" height="120"></canvas>
+        </p>
+
+        <script async type="module" src="figures/example2.js">
+        </script>
+
+        <p>
+            Is this puzzle interesting? Yes and no.
+        </p>
+
+        <ul>
+            <li>Yes, every piece is important and must be moved.</li>
+            <li>Yes, it takes four moves to solve the puzzle, but no we never need to "backtrack" any vehicle after its first move.</li>
+            <li>No, we can track that the yellow vehicle needs to move, which means the red vehicle needs to move, which means the orange vehicle needs to move.</li>
+        </ul>
+
+        <p>
+            Notice that every vehicle had a role to play in the form of a move. However, it might be "interesting" to have a vehicle whose only role is to restrict the movement of other vehicles. We will try to quantify what that means.
+        </p>
+
+        <p>
+            But let's focus on generating puzzles. We will actually reverse the situation by generating vehicle arrangements where the white vehicle is in the win condition, then try to create an interesting start condition by making moves.
+        </p>
+    </div>
+</body>
+
+</html>
