@@ -17,6 +17,7 @@
 
     <script src="lib/fabric.min.js"></script>
 
+    <script type="module" src="js/sha1.js"></script>
     <script type="module" src="js/traffic-jam.js"></script>
     <script type="module" src="js/jam-renderer.js"></script>
 </head>
@@ -72,7 +73,7 @@
         <ul>
             <li>Yes, every piece is important and must be moved.</li>
             <li>Yes, it takes four moves to solve the puzzle, but no we never need to "backtrack" any vehicle after its first move.</li>
-            <li>No, we can track that the yellow vehicle needs to move, which means the red vehicle needs to move, which means the orange vehicle needs to move.</li>
+            <li>No, we can track that the yellow vehicle needs to move, which means the red vehicle needs to move, which means the orange vehicle needs to move. This puzzle would be near the lowest difficulty.</li>
         </ul>
 
         <p>
@@ -82,6 +83,76 @@
         <p>
             But let's focus on generating puzzles. We will actually reverse the situation by generating vehicle arrangements where the white vehicle is in the win condition, then try to create an interesting start condition by making moves.
         </p>
+
+        <p>
+            Let's define a <i>configuration</i> to be an arrangement of vehicles on the board. There are an exponential number of such arrangements (relative to the number of pieces, which requires growing the board). The collection of potential configurations
+            is called the <i>configuration space</i>. We will consider these the vertices of an infinite graph.
+        </p>
+
+        <p>
+            Given a configuration $C$, it has an edge to a configuration $C'$ if we can start from $C$ and move a single vehicle in a legal way to result in $C'$. Notice that $C'$ would also have an edge to $C$ by performing the reverse move. Our configuration space
+            is thus an undirected graph.
+        </p>
+
+        <p>
+            A configuration $C$ can <i>reach</i> a configuration $D$ if there is a sequence of moves that change $C$ into $D$. More formally, $C$ can reach $D$ if there are configurations $C_0, \dots, C_n$ where $C = C_0$, $C_n = D$ and there is an edge
+            from $C_{i-1}$ to $C_{i}$ for every $i$ in $\{1, \dots, n\}$. This sequence is called a <i>path</i> of <i>length</i> $n$. The <i>distance</i> between $C$ and $D$ is the minimum length of a path from $C$ to $D$.
+        </p>
+
+        <p>
+            Here is a potential measure of <b>interesting</b> for a puzzle: what is the minimum distance to a winning state?
+        </p>
+
+        <p>
+            Note also that while there are an infinite number of configurations (if the board size is unbounded), configurations can only reach other configurations with the same board size and number of vehicles. Even with the same set of vehicles, not all configurations
+            are reachable to each other. We will generally be working on only the finite connected components of the infinite configuration space.
+        </p>
+
+        <p>
+            This configuration space provides a direction for generating puzzles. There is a two-phase approach:
+        </p>
+
+        <ol>
+            <li>Generate a list of <b>winning states</b>.</li>
+            <li>From each winning state, generate reachable configurations using breadth-first-search in the configuration space.</li>
+        </ol>
+
+        <p>
+            Using breadth-first-search, we can discover configurations that are a suitable distance from the solved state. We can hope that if the solved state is dense enough, then this walk does not grow incredibly long. This sets up our first experiment.
+        </p>
+
+        <p>
+            Here is our winning state from our first puzzle and its neighbor configurations:
+        </p>
+
+        <p class="figure" align="center">
+            <canvas id="example3" width="800" height="270"></canvas>
+        </p>
+
+        <script async type="module" src="figures/example3.js">
+        </script>
+
+        <p>
+            And here is another path from a farthest point from the winning state in the configuration graph:
+        </p>
+
+        <p class="figure" align="center">
+            <canvas id="example4" width="800" height="270"></canvas>
+        </p>
+
+        <script async type="module" src="figures/example4.js">
+        </script>
+
+        <p>
+            By adding more vehicles, we can make the solution require more steps:
+        </p>
+
+        <p class="figure" align="center">
+            <canvas id="example5" width="800" height="225"></canvas>
+        </p>
+
+        <script async type="module" src="figures/example5.js">
+        </script>
     </div>
 </body>
 
