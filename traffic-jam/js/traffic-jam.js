@@ -509,3 +509,51 @@ export function generate_solution_configurations(rows, columns) {
 
     return configurations;
 }
+
+export function longest_path_from_multi(jams, pool) {
+    let visited = {};
+    let queue = [];
+
+    for (let i = 0; i < jams.length; i++) {
+        pool.AddJam(jams[i]);
+        visited[jams[i].GetHash()] = [0, null];
+        queue.push(jams[i].GetHash());
+    }
+
+    let maxDist = 0;
+    let maxStart = null;
+
+    while (queue.length > 0) {
+        let qhash = queue.shift();
+        let distance = visited[qhash][0];
+
+        if (distance > maxDist) {
+            maxDist = distance;
+            maxStart = qhash;
+        }
+
+        let qjam = pool.GetJam(qhash);
+        let neighbors = qjam.GetNeighbors(pool);
+
+        for (let i = 0; i < neighbors.length; i++) {
+            let nhash = neighbors[i];
+
+            if (nhash in visited) {
+                continue;
+            }
+
+            queue.push(nhash);
+            visited[nhash] = [distance + 1, qhash];
+        }
+    }
+
+    let path = [];
+    let cur = maxStart;
+
+    while (cur != null) {
+        path.push(cur);
+        cur = visited[cur][1];
+    }
+
+    return path;
+}
