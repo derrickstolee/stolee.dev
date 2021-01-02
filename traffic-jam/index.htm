@@ -237,14 +237,33 @@
         </script>
 
         <p>
-            So, let's find an interesting solution state that actually presents an interesting initial configuration with an optimal distance to the solution.
+            However, this algorithm is <i>accidentally quadratic</i> if you're not careful. You need to ensure that you are caching the distance from each configuration to a solution or we will be repeatedly walking in both directions.
+        </p>
+
+        <h3>
+            Distance from all equivalent solutions
+        </h3>
+
+        <p>
+            That leads to the next idea: don't fix a single solution configuration, but instead select an equivalence class of them! Given a specific solution configuration, we can move all of the vehicles other than the goal piece and get an entire set of possible
+            solutions. If we instead start our walk from <i>all of the solutions</i> simultaneously, treating each as a "distance zero" vertex, then we can find an initial configuration that is of maximum distance from any solution just through
+            simple breadth-first-search!
+        </p>
+
+        <p>
+            To generalize even more, we could describe a set of solution configurations by first describing the list of vehicles in each row and column. We then can generate the set of configurations that satisfy those restrictions (of course with the goal piece
+            in the winning position).
+        </p>
+
+        <p>
+            The figure below shows a number of such configurations, but the total number is not rendered because it would take too much room on the page.
         </p>
 
         <p class="figure" align="center">
-            <canvas id="example8" width="720" height="110"></canvas>
+            <canvas id="example9" width="720" height="240"></canvas>
         </p>
 
-        <script async type="module" src="figures/example8.js">
+        <script async type="module" src="figures/example9.js">
         </script>
 
         <h3>

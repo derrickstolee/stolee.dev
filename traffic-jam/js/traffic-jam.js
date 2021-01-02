@@ -162,7 +162,7 @@ export class Jam {
     }
 
     IsSolution() {
-        if (this.grid[this.width - 1][(this.height / 2) - 1] == 0) {
+        if (this.grid[this.width - 1][Math.floor((this.height - 1) / 2)] == 0) {
             return true;
         } else {
             return false;
@@ -173,13 +173,42 @@ export class Jam {
         let i = this.vehicles.length;
 
         this.descriptor = null;
-        this.vehicles.push(new Vehicle(squares));
 
         for (let j = 0; j < squares.length; j++) {
             let pos = squares[j];
 
+            if (this.grid[pos[0]][pos[1]] >= 0) {
+                // unroll, return false
+                for (let k = 0; k < j; k++) {
+                    pos = squares[k];
+                    this.grid[pos[0]][pos[1]] = -1;
+                }
+                return false;
+            }
+
             this.grid[pos[0]][pos[1]] = i;
         }
+
+        this.vehicles.push(new Vehicle(squares));
+        return true;
+    }
+
+    PopVehicle() {
+        let i = this.vehicles.length - 1;
+
+        if (i < 0) {
+            return false;
+        }
+
+        let squares = this.vehicles[i].shape;
+
+        for (let j = 0; j < squares.length; j++) {
+            let pos = squares[j];
+            this.grid[pos[0]][pos[1]] = -1;
+        }
+
+        this.vehicles.pop();
+        return true;
     }
 
     GetNeighbors(pool) {
@@ -339,4 +368,144 @@ export function longest_interesting_path(jam, pool) {
     }
 
     return path;
+}
+
+function generate_partitions_rec(sizes, total, list, progress, depth) {
+    let min = 0;
+
+    if (depth >= sizes.length) {
+        let final = [];
+
+        for (let i = 0; i < progress.length; i++) {
+            final.push(progress[i]);
+        }
+
+        list.push(final);
+        return;
+    }
+
+    if (progress.length > 0) {
+        let piece = progress[progress.length - 1];
+        let max = piece[piece.length - 1];
+        min = max + 1;
+    }
+
+    let l = sizes[depth];
+    for (let start = min; start <= total - l; start++) {
+        let piece = [];
+        for (let j = 0; j < l; j++) {
+            piece.push(start + j);
+        }
+        progress.push(piece);
+        generate_partitions_rec(sizes, total, list, progress, depth + 1);
+        progress.pop();
+    }
+}
+
+function generate_partitions(sizes, total) {
+    let list = [];
+
+    generate_partitions_rec(sizes, total, list, [], 0);
+
+    return list;
+}
+
+function generate_solution_configurations_recursive(rows, columns, configurations, jam, i) {
+    if (i >= rows.length + columns.length) {
+        let complete_jam = new Jam(columns.length, rows.length);
+
+        for (let j = 0; j < jam.vehicles.length; j++) {
+            complete_jam.AddVehicle(jam.vehicles[j].shape);
+        }
+
+        configurations.push(complete_jam);
+        return;
+    }
+
+    if (i < rows.length) {
+        if (rows[i].length == 0) {
+            return generate_solution_configurations_recursive(rows, columns, configurations, jam, i + 1);
+        }
+
+        let options = generate_partitions(rows[i], columns.length);
+
+        for (let j = 0; j < options.length; j++) {
+            let option = options[j];
+
+            let works = true;
+
+            for (let k = 0; works && k < option.length; k++) {
+                let shape = [];
+                for (let m = 0; m < option[k].length; m++) {
+                    shape.push([option[k][m], i]);
+                }
+
+                if (!jam.AddVehicle(shape)) {
+                    works = false;
+                    for (let m = k - 1; m >= 0; m--) {
+                        jam.PopVehicle();
+                    }
+                }
+            }
+
+            if (works) {
+                generate_solution_configurations_recursive(rows, columns, configurations, jam, i + 1);
+
+                for (let k = 0; k < option.length; k++) {
+                    jam.PopVehicle();
+                }
+            }
+        }
+    } else {
+        let col = i - rows.length;
+        if (columns[col].length == 0) {
+            return generate_solution_configurations_recursive(rows, columns, configurations, jam, i + 1);
+        }
+
+        let options = generate_partitions(columns[col], rows.length);
+
+        for (let j = 0; j < options.length; j++) {
+            let option = options[j];
+
+            let works = true;
+
+            for (let k = 0; works && k < option.length; k++) {
+                let shape = [];
+                for (let m = 0; m < option[k].length; m++) {
+                    shape.push([col, option[k][m]]);
+                }
+
+                if (!jam.AddVehicle(shape)) {
+                    works = false;
+                    for (let m = k - 1; m >= 0; m--) {
+                        jam.PopVehicle();
+                    }
+                }
+            }
+
+            if (works) {
+                generate_solution_configurations_recursive(rows, columns, configurations, jam, i + 1);
+
+                for (let k = 0; k < option.length; k++) {
+                    jam.PopVehicle();
+                }
+            }
+        }
+    }
+}
+
+export function generate_solution_configurations(rows, columns) {
+    let configurations = [];
+
+    let jam = new Jam(columns.length, rows.length);
+
+    let goal_piece = [
+        [columns.length - 2, Math.floor((rows.length - 1) / 2)],
+        [columns.length - 1, Math.floor((rows.length - 1) / 2)],
+    ];
+    jam.AddVehicle(goal_piece);
+
+    generate_solution_configurations_recursive(rows, columns, configurations, jam, 0);
+
+    return configurations;
 }
