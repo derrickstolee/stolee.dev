@@ -4,7 +4,7 @@ import { generate_solution_configurations } from '../js/traffic-jam.js';
 import { render_jams } from '../js/jam-renderer.js';
 
 let rows = [
-    [],
+    [2],
     [3],
     [],
     [],

@@ -5,7 +5,7 @@ import { render_jams } from '../js/jam-renderer.js';
 
 
 let rows = [
-    [],
+    [2],
     [3],
     [],
     [],
