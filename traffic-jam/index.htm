@@ -80,6 +80,10 @@
             Notice that every vehicle had a role to play in the form of a move. However, it might be "interesting" to have a vehicle whose only role is to restrict the movement of other vehicles. We will try to quantify what that means.
         </p>
 
+        <h3>
+            Finding interesting initial states
+        </h3>
+
         <p>
             But let's focus on generating puzzles. We will actually reverse the situation by generating vehicle arrangements where the white vehicle is in the win condition, then try to create an interesting start condition by making moves.
         </p>
@@ -126,7 +130,7 @@
         </p>
 
         <p class="figure" align="center">
-            <canvas id="example3" width="800" height="270"></canvas>
+            <canvas id="example3" width="720" height="270"></canvas>
         </p>
 
         <script async type="module" src="figures/example3.js">
@@ -137,7 +141,7 @@
         </p>
 
         <p class="figure" align="center">
-            <canvas id="example4" width="800" height="270"></canvas>
+            <canvas id="example4" width="720" height="270"></canvas>
         </p>
 
         <script async type="module" src="figures/example4.js">
@@ -148,11 +152,101 @@
         </p>
 
         <p class="figure" align="center">
-            <canvas id="example5" width="800" height="225"></canvas>
+            <canvas id="example5" width="720" height="225"></canvas>
         </p>
 
         <script async type="module" src="figures/example5.js">
         </script>
+        <p>
+            However, we might get more steps by making our "solution" require extra steps even after allowing the goal piece to escape the traffic jam:
+        </p>
+
+        <p class="figure" align="center">
+            <canvas id="example6" width="720" height="225"></canvas>
+        </p>
+
+        <script async type="module" src="figures/example6.js">
+        </script>
+
+        <p>
+            So, ideally, we want to find:
+        </p>
+
+        <ol>
+            <li>
+                A final solution state $S$.
+            </li>
+            <li>
+                An initial state $I$ where $I$ is as far from $S$ as possible while still being reachable.
+            </li>
+            <li>
+                The distance from $I$ to $S$ is equal to the minimum distance from $I$ to <i>any</i> solution.
+            </li>
+        </ol>
+
+        <p>
+            This actually helps to narrow our search somewhat. As we search for configurations reachable from our solution state $S$, we can detect if the configuration $C$ has a closer solution state. If so, then we can prune the configuration $C$ from our walk
+            and focus towards configurations that more naturally land at the solution $S$.
+        </p>
+
+        <p>
+            This leads to the following algorithm for discovering a <i>farthest interesting initial state</i> $I$ based on a given solution state $S$:
+        </p>
+
+        <ol>
+            <li>
+                Let $Q$ be a queue. Add the configuration $S$ to $Q$.
+            </li>
+            <li>
+                Let $P$ be a dictionary with configurations as keys and pairs as values. The first position of the pair is a distance and the second position is a configuration. Set $P[S] := (0, \emptyset)$.(I use $\emptyset$ for a null value.)
+            </li>
+            <li>
+                Set $m$ equal to zero, and $I$ equal to $S$.
+            </li>
+            <li>
+                While $Q$ is not empty:
+
+                <ol>
+                    <li>Pop $C$ off of $Q$.</li>
+                    <li>Let $(d, C') := P[C]$.</li>
+                    <li>Compute the minimum distance $d'$ from $C$ to a solution. (This requires another breadth-first-search, but I omit the details from this algorithm.)</li>
+                    <li>If $d'$ is strictly less than $d$, then continue the loop.</li>
+                    <li>If $d$ is greater than $m$, then set $m := d$ and $I := C$.</li>
+                    <li>For each configuration $D$ adjacent to $C$:
+                        <ol>
+                            <li>If $D$ is not a key in $P$, then set $P[D] := (d+1, C)$ and push $D$ to $Q$.</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                After the queue is empty, the most interesting initial state is $I$ with distance $m$ from $S$. To construct an optimal walk from $I$ to $S$, we can walk from $C_0 = I$ to $C_1 = P[C_0][1]$, and so on with $C_{i+1} = P[C_i][1]$ until some $C_n \equiv
+                S$.
+            </li>
+        </ol>
+
+        <p>
+            Using this algorithm, we can see that the most interesting initial configuration for the previous solution state is much shorter than the initial configuration of farthest distance.
+        </p>
+
+        <p class="figure" align="center">
+            <canvas id="example7" width="300" height="130"></canvas>
+        </p>
+
+        <script async type="module" src="figures/example7.js">
+        </script>
+
+        <h3>
+            Finding good solutions
+        </h3>
+
+        <p>
+            That's only half the story! How do we construct interesting solution states $S$?
+        </p>
+
+        <p>
+            Putting on my combinatorial generation hat, the natural way to construct possible solution states is to add pieces one-by-one until constructing a board with an interesting state. However, this grows exponentially as we add pieces.
+        </p>
     </div>
 </body>
 

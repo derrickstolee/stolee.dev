@@ -29,8 +29,8 @@ export class Vehicle {
         this.maxY = -1;
         this.minY = 10000;
 
-        for (var i = 0; i < shape.length; i++) {
-            var p = shape[i];
+        for (let i = 0; i < shape.length; i++) {
+            let p = shape[i];
 
             if (p[0] < this.minX) {
                 this.minX = p[0];
@@ -56,59 +56,67 @@ export class Vehicle {
     }
 
     GetPossiblePositions(jam) {
-        var list = [];
+        let list = [];
+
         if (this.direction == 'y') {
-            var local_min_y = this.minY;
-            var local_max_y = this.maxY + 1;
+            let x = this.minX;
+            let l = this.maxY - this.minY + 1;
 
-            for (var y = this.minY - 1; y >= 0; y--) {
-                if (jam.grid[this.minX][y] >= 0) {
+            let y_range_low = this.minY;
+            let y_range_high = this.minY + 1;
+
+            for (let y = y_range_low - 1; y >= 0; y--) {
+                if (jam.grid[x][y] >= 0) {
                     break;
                 }
-                local_min_y = y;
+                y_range_low = y;
             }
-            for (var y = this.maxY + 1; y < jam.width; y++) {
-                if (jam.grid[this.minX][y] >= 0) {
+            for (let y = y_range_high; y + l <= jam.height; y++) {
+                if (jam.grid[x][y + l - 1] >= 0) {
                     break;
                 }
-                local_max_y = y + 1;
+                y_range_high = y + 1;
             }
 
-            for (var y = local_min_y; y < local_max_y - (this.maxY - this.minY); y++) {
+            for (let y = y_range_low; y < y_range_high; y++) {
                 if (y == this.minY) {
                     continue;
                 }
 
-                var vehicle = [];
-                for (var i = 0; i <= this.maxY - this.minY; i++) {
-                    vehicle.push([this.minX, y + i]);
+                let vehicle = [];
+                for (let yy = 0; yy < l; yy++) {
+                    vehicle.push([x, y + yy]);
                 }
                 list.push(vehicle);
             }
         } else {
-            var local_min_x = this.minX;
-            var local_max_x = this.maxX + 1;
+            let y = this.minY;
+            let l = this.maxX - this.minX + 1;
 
-            for (var x = this.minX - 1; x >= 0; x--) {
-                if (jam.grid[x][this.minY] >= 0) {
+            let x_range_low = this.minX;
+            let x_range_high = this.minX + 1;
+
+            for (let x = x_range_low - 1; x >= 0; x--) {
+                if (jam.grid[x][y] >= 0) {
                     break;
                 }
-                local_min_x = x;
+                x_range_low = x;
             }
-            for (var x = this.maxX + 1; x < jam.width; x++) {
-                if (jam.grid[x][this.minY] >= 0) {
+            for (let x = x_range_high; x + l <= jam.width; x++) {
+                if (jam.grid[x + l - 1][y] >= 0) {
                     break;
                 }
-                local_max_x = x + 1;
+                x_range_high = x + 1;
             }
-            for (var x = local_min_x; x < local_max_x - (this.maxX - this.minX); x++) {
+
+            for (let x = x_range_low; x < x_range_high; x++) {
                 if (x == this.minX) {
                     continue;
                 }
 
-                var vehicle = [];
-                for (var i = 0; i <= this.maxX - this.minX; i++) {
-                    vehicle.push([x + i, this.minY]);
+                let vehicle = [];
+                for (let xx = 0; xx < l; xx++) {
+                    vehicle.push([x + xx, y]);
                 }
                 list.push(vehicle);
             }
@@ -123,12 +131,12 @@ export class Jam {
         this.width = width;
         this.height = height;
         this.grid = {};
-        this.string = null;
+        this.descriptor = null;
         this.hash = null;
 
-        for (var x = 0; x < width; x++) {
+        for (let x = 0; x < width; x++) {
             this.grid[x] = {};
-            for (var y = 0; y < height; y++) {
+            for (let y = 0; y < height; y++) {
                 this.grid[x][y] = -1;
             }
         }
@@ -137,45 +145,53 @@ export class Jam {
     }
 
     GetHash() {
-        if (this.string != null) {
-            return this.hash;
+        if (this.descriptor != null) {
+            return this.descriptor;
         }
 
-        this.string = "";
-        for (var x = 0; x < this.width; x++) {
-            for (var y = 0; y < this.height; y++) {
-                this.string += this.grid[x][y] + " ";
+        this.descriptor = new String("");
+        for (let y = 0; y < this.height; y++) {
+            for (let x = 0; x < this.width; x++) {
+                this.descriptor += this.grid[x][y] + " ";
             }
-            this.string += "\n";
+            this.descriptor += "\n";
         }
 
-        this.hash = sha1(this.string);
-        return this.hash;
+        this.hash = sha1(this.descriptor);
+        return this.descriptor;
+    }
+
+    IsSolution() {
+        if (this.grid[this.width - 1][(this.height / 2) - 1] == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     AddVehicle(squares) {
-        var i = this.vehicles.length;
+        let i = this.vehicles.length;
 
-        this.string = null;
+        this.descriptor = null;
         this.vehicles.push(new Vehicle(squares));
 
-        for (var j = 0; j < squares.length; j++) {
-            var pos = squares[j];
+        for (let j = 0; j < squares.length; j++) {
+            let pos = squares[j];
 
             this.grid[pos[0]][pos[1]] = i;
         }
     }
 
     GetNeighbors(pool) {
-        var hashlist = [];
+        let hashlist = [];
 
-        for (var i = 0; i < this.vehicles.length; i++) {
-            var moves = this.vehicles[i].GetPossiblePositions(this);
+        for (let i = 0; i < this.vehicles.length; i++) {
+            let moves = this.vehicles[i].GetPossiblePositions(this);
 
-            for (var j = 0; j < moves.length; j++) {
-                var jam = new Jam(this.width, this.height);
+            for (let j = 0; j < moves.length; j++) {
+                let jam = new Jam(this.width, this.height);
 
-                for (var ii = 0; ii < this.vehicles.length; ii++) {
+                for (let ii = 0; ii < this.vehicles.length; ii++) {
                     if (ii == i) {
                         jam.AddVehicle(moves[j]);
                     } else {
@@ -193,29 +209,29 @@ export class Jam {
 }
 
 export function longest_path(jam, pool) {
-    var visited = {};
+    let visited = {};
     visited[jam.GetHash()] = [0, null];
 
-    var queue = [jam.GetHash()];
-    var maxDist = 0;
-    var maxStart = null;
+    let queue = [jam.GetHash()];
+    let maxDist = 0;
+    let maxStart = null;
 
     pool.AddJam(jam);
 
     while (queue.length > 0) {
-        var qhash = queue.shift();
-        var distance = visited[qhash][0];
+        let qhash = queue.shift();
+        let distance = visited[qhash][0];
 
         if (distance > maxDist) {
             maxDist = distance;
             maxStart = qhash;
         }
 
-        var qjam = pool.GetJam(qhash);
-        var neighbors = qjam.GetNeighbors(pool);
+        let qjam = pool.GetJam(qhash);
+        let neighbors = qjam.GetNeighbors(pool);
 
-        for (var i = 0; i < neighbors.length; i++) {
-            var nhash = neighbors[i];
+        for (let i = 0; i < neighbors.length; i++) {
+            let nhash = neighbors[i];
 
             if (nhash in visited) {
                 continue;
@@ -226,8 +242,96 @@ export function longest_path(jam, pool) {
         }
     }
 
-    var path = [];
-    var cur = maxStart;
+    let path = [];
+    let cur = maxStart;
+
+    while (cur != null) {
+        path.push(cur);
+        cur = visited[cur][1];
+    }
+
+    return path;
+}
+
+export function distance_to_solution(jam) {
+    let pool = new JamPool();
+    let visited = {};
+
+    visited[jam.GetHash()] = [0, null];
+
+    let queue = [jam.GetHash()];
+
+    pool.AddJam(jam);
+
+    while (queue.length > 0) {
+        let qhash = queue.shift();
+        let distance = visited[qhash][0];
+
+        let qjam = pool.GetJam(qhash);
+
+        if (qjam.IsSolution()) {
+            return distance;
+        }
+
+        let neighbors = qjam.GetNeighbors(pool);
+
+        for (let i = 0; i < neighbors.length; i++) {
+            let nhash = neighbors[i];
+
+            if (nhash in visited) {
+                continue;
+            }
+
+            queue.push(nhash);
+            visited[nhash] = [distance + 1, qhash];
+        }
+    }
+
+    return -1;
+}
+
+export function longest_interesting_path(jam, pool) {
+    let visited = {};
+    visited[jam.GetHash()] = [0, null];
+
+    let queue = [jam.GetHash()];
+    let maxDist = 0;
+    let maxStart = null;
+
+    pool.AddJam(jam);
+
+    while (queue.length > 0) {
+        let qhash = queue.shift();
+        let distance = visited[qhash][0];
+
+        let qjam = pool.GetJam(qhash);
+
+        let min_dist = distance_to_solution(qjam);
+
+        if (min_dist < distance) {
+            continue;
+        }
+        if (distance > maxDist) {
+            maxDist = distance;
+            maxStart = qhash;
+        }
+
+        let neighbors = qjam.GetNeighbors(pool);
+
+        for (let i = 0; i < neighbors.length; i++) {
+            let nhash = neighbors[i];
+
+            if (nhash in visited) {
+                continue;
+            }
+
+            queue.push(nhash);
+            visited[nhash] = [distance + 1, qhash];
+        }
+    }
+
+    let path = [];
+    let cur = maxStart;
 
     while (cur != null) {
         path.push(cur);
