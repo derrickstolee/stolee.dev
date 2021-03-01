@@ -68,7 +68,9 @@ class JamRenderer {
 
 export function render_jam(id, jam, renderX = 0, renderY = 0, renderW = 400, renderH = 400) {
     var canvas = new fabric.Canvas(id);
-    return new JamRenderer(jam, canvas, renderX, renderY, renderW, renderH);
+    var renderer = new JamRenderer(jam, canvas, renderX, renderY, renderW, renderH);
+    canvas.renderAll();
+    return renderer;
 }
 
 export function render_jams(id, jams, renderX = 120, renderY = 0, renderW = 100, renderH = 100, maxWidth = 800) {
@@ -85,4 +87,5 @@ export function render_jams(id, jams, renderX = 120, renderY = 0, renderW = 100,
         renderers.push(new JamRenderer(jams[i], canvas, column * renderX, row * renderY, renderW, renderH));
         column++;
     }
+    canvas.renderAll();
 }
