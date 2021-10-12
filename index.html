@@ -332,18 +332,87 @@
     <ul class="list">
         <li>
             <div class="link">
-                <a href="https://github.com/git/git/compare/887952b8c680626f4721cb5fa57704478801aca4...3797a0a7b7aa8d0abd1b7ff7b95a40a9739d9278">
-                    `git maintenance` command</a>
+                <a href="https://www.git-scm.com/docs/git-config#Documentation/git-config.txt-indexsparse">
+                    The sparse index</a>
             </div>
             <p>
-                A new builtin helps customize Git maintenance. Users can register their repositories to be maintained in the background using `git maintenance start`.
+                The sparse index reduces the index size when using cone-mode sparse-checkout patterns, creating significant performance boosts for monorepos.
+                <i>Git v2.32.0, v2.33.0, and v2.34.0</i>
+
+                <ul class="list">
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/47957485b3b731a7860e0554d2bd12c0dce1c75a...c9e40ae8ec41c5566e5849a87c969fa81ef49fcd">
+                                Sparse index format
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/c9e40ae8ec41c5566e5849a87c969fa81ef49fcd...4279cb1c6e4e5b60b099833d8e3debba4ac35eba">
+                                Protections against hitting sparse directories when not expecting them
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/670b81a890388c60b7032a4f5b879f2ece8c4558...e5ca291076a8a936283bb2c57433c4393d3f80c2">
+                                Integration with <code>git status</code>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/e5ca291076a8a936283bb2c57433c4393d3f80c2...e05cdb17e89a2d3257533d47350b3138bfce8737">
+                                Integration with <code>git commit</code> and <code>git checkout</code>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/e05cdb17e89a2d3257533d47350b3138bfce8737...42f8ed6ca24854141c34aa82472ca126fdaeaf65">
+                                Integration with <code>git add</code>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/716f68ec33e3506babee03c4df497a7e211220ee...55dfcf9591b088ce60ec80eb5425dda18223cac0">
+                                Sparse-checkout now deletes ignored files outside of the cone
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/55dfcf9591b088ce60ec80eb5425dda18223cac0...516680ba7704c473bb21628aa19cabbd787df4db">
+                                Integration with <code>git merge</code>, <code>git rebase</code>, <code>git cherry-pick</code>, and <code>git revert</code>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/516680ba7704c473bb21628aa19cabbd787df4db...6579e788c0a4b9468c5e2954a0868f9db0496e43">
+                                Restrict <code>git add</code>, <code>git rm</code>, and <code>git mv</code> to disallow changing things outside of the sparse cone, unless <code>--sparse</code> is specified.
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/887952b8c680626f4721cb5fa57704478801aca4...3797a0a7b7aa8d0abd1b7ff7b95a40a9739d9278">
+                    <code>git maintenance</code> command</a>
+            </div>
+            <p>
+                A new builtin helps customize Git maintenance. Users can register their repositories to be maintained in the background using <code>git maintenance start</code>.
                 <i>Git v2.29.0, v2.30.0, v2.31.0</i>
             </p>
         </li>
         <li>
             <div class="link">
                 <a href="https://github.com/git/git/compare/d9f6f3b6195a0ca35642561e530798ad1469bd41...190a65f9db8db9d87d54351429f7879fcb4ad608">
-                    `git sparse-checkout` command</a>
+                    <code>git sparse-checkout</code> command</a>
             </div>
             <p>
                 A new builtin helps users manage their sparse-checkout files. A new "cone mode" improves performance for a common pattern type.
@@ -353,10 +422,10 @@
         <li>
             <div class="link">
                 <a href="https://github.com/git/git/compare/9c9b961d7eb15fb583a2a812088713a68a85f1c0...cb99a34e23e32ca8e94bafaa9699cfd133a17fd3">
-                    `fetch.writeCommitGraph`</a>
+                    <code>fetch.writeCommitGraph</code></a>
             </div>
             <p>
-                Write the Git commit-graph after every `git fetch` operation, ensuring that the repo is optimized for the new objects.
+                Write the Git commit-graph after every <code>git fetch</code> operation, ensuring that the repo is optimized for the new objects.
                 <i>Git v2.24.0</i>
             </p>
         </li>
@@ -366,7 +435,7 @@
                     Feature macros</a>
             </div>
             <p>
-                Create new `feature.*` config options that group other config options together. Provides recommendations for users who do not want to read every config setting.
+                Create new <code>feature.*</code> config options that group other config options together. Provides recommendations for users who do not want to read every config setting.
                 <i>Git v2.24.0</i>
             </p>
         </li>
@@ -523,7 +592,7 @@
                     GitHub Blog: Highlights from Git 2.24 (November 4th, 2019)</a>
             </div>
             <p>
-                Features a discussion of feature macros and `fetch.writeCommitGraph`.
+                Features a discussion of feature macros and <code>fetch.writeCommitGraph</code>.
             </p>
         </li>
         <li>
