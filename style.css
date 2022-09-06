@@ -81,3 +81,11 @@ p.footer {
     font-size: 10pt;
     font-style: italic;
 }
+
+.sublist {
+    padding: 2;
+    display:grid;
+    position: relative;
+    height: fit-content;
+    text-size-adjust: -2;
+}
