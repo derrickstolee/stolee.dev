@@ -22,8 +22,8 @@ building software.
 > lens as an individual contributor software engineer.
 >
 > While the articles are usually focused on upper
-> management roles, I believe there are many parellels
-> with IC softwre engineers. Our profession is very
+> management roles, I believe there are many parallels
+> with IC software engineers. Our profession is very
 > intellectually demanding, there are always trade-offs
 > in every choice we make, and our mistakes are likely
 > to affect many people (customers or others in our
@@ -167,7 +167,7 @@ they compete _directly_ in the space. By coming
 together and being open about our goals, the
 community thrives and everyone benefits.
 
-Also, I never thought I'd learn so much minutae
+Also, I never thought I'd learn so much minutia
 about shell scripts that I do after working on
 Git.
 
