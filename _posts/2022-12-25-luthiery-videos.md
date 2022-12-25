@@ -130,16 +130,28 @@ video I can watch with a small child in my lap to help them calm down.
 
 ## Getting Started Plan
 
-Guitar setup. Learn how to tweak all the things on my own guitars.
+The first thing I need to learn is how to adjust the settings on my own
+guitars. I can change my strings just fine, but adjusting the string
+height (the _action_) or the bend of the neck are all new concepts to me.
+It would also be good to clean up the fretboard on one guitar I bought
+used, and the finishing techniques would be helpful to try there.
 
-Build helper tools such as a neck stand.
+To whet my woodworking appetite, I could build some helper tools for when
+I get around to building a guitar, such as a [neck rest](https://www.crimsonguitars.com/collections/guitar-maintenance-tools/products/rockin-neck-rest)
+or a stand to hold multiple guitars.
 
-Start with a kit. Focus on the finishing and wiring. Complete the project
-and learn what areas to focus on again later. Much cheaper in terms of
-investment than starting from a body blank. Fret boards and neck seem like
-the most complicated things and easiest to get wrong.
+For my first full guitar, I plan to start with a kit, such as one from
+[StewMac](https://www.stewmac.com/kits-and-projects/instrument-kits/?gclid=CjwKCAiAhqCdBhB0EiwAH8M_GtAz_AnfZDvJDVEwg1fkQc03fbvPHU29DuqdZIY9QIMtUz8jAekjxRoCdIsQAvD_BwE),
+which seems to be the place to go. The focus is to get to a complete
+project as soon as possible, as well as to have a straight-forward way to
+learn about wiring and finishing. This approach should be much cheaper
+than starting from a body blank because of the materials and tools. Fret boards and neck seem like
+the most complicated things and easiest to get wrong, so leaving that for
+a future project would be best.
 
-Create a custom body blank with prebuilt neck.
+The next step would be to create a custom body while using a prebuilt neck.
+This might be an optional one depending on if I want to make the leap to
+a full build based on the kit experience.
 
 ## Guitar Making Bucket List
 
