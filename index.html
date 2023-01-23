@@ -444,6 +444,20 @@
 
         <li>
             <div class="link">
+                <a href="https://github.com/git/git/compare/c48035d29b4e524aed3a32f0403676f0d9128863...17194b195d5db1cfd19af57e817c29bd3fa75c02">
+                    <code>index.skipHash</code> config option</a>
+            </div>
+            <p>
+                By enabling this config option, your index writes will speed up
+                dramatically while only losing a small probability of error detection.
+                This will speed up `git status`, `git add`, and `git commit` commands,
+                among others. A version of this feature was previously available in
+                the `microsoft/git` fork and its version of Scalar.
+                <i>Git v2.40.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
                 <a href="https://git-scm.com/docs/bundle-uri">
                     Bundle URIs</a>
             </div>
@@ -454,6 +468,13 @@
                 <i>Git v2.38.0</i> (still under development)
 
                 <ul>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/eea7033409a0ed713c78437fc76486983d211e25...876094ac16870727207e6afc0b26060101a52359">
+                                Git servers can advertise bundle lists over protocol v2 using the `bundle-uri` command
+                            </a>
+                        </div>
+                    </li>
                     <li>
                         <div class="link">
                             <a href="https://github.com/git/git/compare/f677f62970eed0f4b1a9075bcaf3f9f64027f30e...8628a842bddda7723ad7548b7f6d141123a164a0">
