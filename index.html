@@ -441,7 +441,17 @@
 
     <div class="sectionheader" id="git-features">Git Features</div>
     <ul class="list">
-
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/d15644fe0226af7ffc874572d968598564a230dd...cbfe360b140fe92d9c4a763bf630c3b8ba431522">
+                    <code>ahead-behind</code> algorithm and ref-filter token</a>
+            </div>
+            <p>
+	        The <code>git for-each-ref</code> command now understands <code>%(ahead-behind:base)</code>
+		tokens to output counts for comparing commit histories. This algorithm powers GitHub's
+		branches page.
+	    </p>
+	</li>
         <li>
             <div class="link">
                 <a href="https://github.com/git/git/compare/c48035d29b4e524aed3a32f0403676f0d9128863...17194b195d5db1cfd19af57e817c29bd3fa75c02">
@@ -468,6 +478,13 @@
                 <i>Git v2.38.0</i> (still under development)
 
                 <ul>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/d4e241a14510934420aa67c5480361376446e117...c429bed10223135a13f1f2f854e367762c37af7a">
+                                Git clients can fetch from bundle lists when using creationToken heuristic
+                            </a>
+                        </div>
+                    </li>
                     <li>
                         <div class="link">
                             <a href="https://github.com/git/git/compare/eea7033409a0ed713c78437fc76486983d211e25...876094ac16870727207e6afc0b26060101a52359">
