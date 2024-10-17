@@ -437,6 +437,19 @@
     <ul class="list">
         <li>
             <div class="link">
+                <a href="https://github.com/git/git/compare/3dd2a2feca6e47b2931dadadad44f92a35e8cf51...4b707a6e99651b1ba7c8718f95ee57c6721c85d6">
+                    <code>git for-each-ref</code> and the <code>is-base</code> token
+		</a>
+            </div>
+            <p>
+	        The <code>git for-each-ref</code> command now understands <code>%(is-base:&lt;committish&gt;)</code>
+		tokens to discover which of the filtered refs is the likely base of the given commit or branch. A
+		similar algorithm powers a new Azure DevOps feature for automatically choosing the best target branch
+		for a new pull request.
+	    </p>
+	</li>
+        <li>
+            <div class="link">
                 <a href="https://github.com/git/git/compare/d15644fe0226af7ffc874572d968598564a230dd...cbfe360b140fe92d9c4a763bf630c3b8ba431522">
                     <code>ahead-behind</code> algorithm and ref-filter token</a>
             </div>
@@ -759,6 +772,16 @@
 
     <div class="sectionheader" id="external">Other places featuring my work</div>
     <ul class="list">
+        <li>
+            <div class="link">
+                <a href="https://github.blog/open-source/git/highlights-from-git-2-47/#quickly-find-base-branches-with-for-each-ref">
+				Highlights from Git 2.47
+			</a>
+            </div>
+            <p>
+                Includes discussions of <code>git for-each-ref</code>'s new <code>is-base</code> token and how it can help identify the base branch.
+            </p>
+        </li>
         <li>
             <div class="link">
                 <a href="https://martinheinz.dev/blog/109">
