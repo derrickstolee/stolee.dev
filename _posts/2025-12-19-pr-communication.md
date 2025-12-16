@@ -248,7 +248,7 @@ tools!
 * Create templates. Review those templates as a team before committing
   them to the repo. Hold each other accountable to following the
   templates.
-  
+
 * Schedule time to revisit all of these thoughts after experimenting
   with the new standards for a while (1 month, 3 months, 1 year?). You
   will always learn new things that can help expand or contract the
@@ -265,10 +265,59 @@ tools!
 
 * Commit messages
 * Stacked pull requests
+  - [Working with stacked branches in Git is easier with `--update-refs`](https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/)
+
 * Hotfixes
 
 # What else should I read about this?
 
-* Write Better Commits, Create Better Projects
-* Git contribution guidelines
-...
+## [Write Better Commits, Create Better Projects](https://github.blog/developer-skills/github/write-better-commits-build-better-projects/)
+
+This blog post by GitHub engineer Victoria Dye focuses on commits as a
+method of communicating a larger change via small atomic changes. It goes
+deep on methods for organizing and updating your commits via intereactive
+rebase.
+
+If you are focused on pull requests as your unit of change and always
+squash-merge, then you don't need the details around commit manipulation.
+The advice around justifying your work in a commit message translates well
+into communicating in a pull request description.
+
+## [Git is about communication](https://tomdebruijn.com/posts/git-is-about-communication/)
+
+This blog post focuses on how Git commits are an archive of important context
+that you'll be grateful to have later if you are diligent about discussing
+the "why" of your changes in the present.
+
+## [Pull Request Best Practices: A Complete Guide for Modern Developers](https://articles.mergify.com/pull-request-best-practices-complete-guide-developers/)
+
+This guide by Mergify focuses on why small pull requests are better. It
+includes some discussion about PR metrics as well. There's also some
+discussion about automating parts of the review to free up time for the
+humans reviewing things at a higher level.
+
+## [Git contribution guidelines](https://github.com/git/git/blob/master/Documentation/SubmittingPatches#L234)
+
+Did you know that Git itself doesn't use pull requests? This document
+details much about the process for submitting patches to the Git mailing
+list. One main aspect of code review on a mailing list is that every bit
+of the change is up for review, including each and every commit message.
+
+This document includes some very helpful ideas for being rigorous around
+communicating a code change.
+
+## [Git code review guidelines](https://github.com/git/git/blob/master/Documentation/ReviewingGuidelines.adoc#reviewing-patches)
+
+This document details the Git community's expectations for code _reviewers_,
+not just authors. Consider creating something like this for your own team
+so you can set standards that fit your group and hold each other accountable.
+
+## [The Programmer's Brain](https://www.manning.com/books/the-programmers-brain)
+
+This book by Prof. Felienne Hermans goes deep to connect the science of human
+brains to the realities faced by programmers dealing with large systems. Much of
+the book focuses on our limited working memory and how mental models, architecture,
+and tooling help us work through complex ideas while paging ideas in and out of
+our long-term memory.
+
+
