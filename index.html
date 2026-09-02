@@ -438,6 +438,206 @@
     <ul class="list">
         <li>
             <div class="link">
+                <a href="https://github.com/git/git/compare/6a4418c36d6bad69a599044b3cf49dcbd049cb45...105aacd072e41c55948d016b46f86f75db2487b3">
+                    Continued sparse-index integrations</a>
+            </div>
+            <p>
+                More commands avoid expanding a sparse index when they can operate
+                directly on sparse directory entries. These integrations improve
+                performance for <code>git diff-index</code>, patch-mode commands,
+                <code>git ls-files</code>, and <code>git restore --staged</code>.
+                <i>Git v2.47.0 through v2.55.0</i>
+
+                <ul>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/3a7362eb9fad0c4838f5cfaa95ed3c51a4c18d93...b44c926c9fb28b3847efc0057c4563ad76372e30">
+                                Integrate <code>git diff-index</code> with the sparse index
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/d50a5e8939abfc07c2ff97ae72e9330939b36ee0...ecf9ba20e35ded94d6b1f44f83bb9f7c32162654">
+                                Integrate <code>git apply</code>, <code>git add -p/-i</code>,
+                                and <code>git reset --patch</code> with the sparse index
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/f368df439b31b422169975cc3c95f7db6a46eada...681f26bccc017371ae6ee20db55e3edb52420a25">
+                                Expand the sparse index lazily in <code>git ls-files</code>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/87a0bdbf0f72b7561f3cd50636eee33dcb7dbcc3...c178b02e29f7e3d4033893af9fad8477c9b99be9">
+                    Path-walk compression for <code>git pack-objects</code></a>
+            </div>
+            <p>
+                The <code>--path-walk</code> option organizes objects by path before
+                searching across paths, improving delta compression when Git's name-hash
+                heuristic has many collisions. It is also available through
+                <code>git repack</code> and can be enabled for Scalar pushes.
+                <i>Git v2.51.0</i>
+
+                <ul>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/94f057755b7941b321fd11fec1b2e3ca5313a4e0...456efac53b088759abdadb6a33fa9bebdd9945b7">
+                                Support object filters during path-walk compression
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/6e8d538aab8fe4dd07ba9fb87b5c7edcfa5706ad...a6d92c48e4426b88a427a75ed2c20d1daa5dc7f7">
+                    Fetch negotiation controls</a>
+            </div>
+            <p>
+                The <code>--negotiation-restrict</code> option limits fetch negotiation
+                to history reachable from selected refs, while
+                <code>--negotiation-include</code> guarantees that selected tips are sent
+                as <code>have</code> lines. Per-remote config makes these controls useful
+                for both fetches and negotiated pushes.
+                <i>Git v2.55.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/1faf5b085a171f9ba9a6d7a446e0de16acccb1dc...b4e8f60a3c78477e1f28b052cd740ac4a43741d5">
+                    <code>git rev-list --maximal-only</code></a>
+            </div>
+            <p>
+                This option restricts revision output to commits that are not reachable
+                from any other commit in the revision range.
+                <i>Git v2.54.0</i>
+
+                <ul>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/2f8c3f6a5a6d6a3de205be709e1a598b9d4b0b3e...b0ba57daa86dfba0a6551613452d1cb2301266a2">
+                                Optimize <code>--maximal-only</code> using the
+                                <code>git show-branch --independent</code> algorithm
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/bc204b742735ae06f65bb20291c95985c9633b7f...85127bcdeab5ab34f9c738da3fcc88d637f39089">
+                    <code>git backfill</code></a>
+            </div>
+            <p>
+                The experimental <code>git backfill</code> command bulk-downloads missing
+                blobs in a blobless partial clone. It groups historical versions by path
+                into large requests, avoiding many one-blob lazy fetches and enabling
+                better delta compression.
+                <i>Git v2.49.0</i>
+
+                <ul>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/ca1db8a0f7dc0dbea892e99f5b37c5fe5861be71...46d1f4cf4dcb8aaf799f78410af829e149086f36">
+                                Restrict backfills with revision ranges and pathspecs
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/67ad42147a7acc2af6074753ebd03d904476118f...096aa6099834ce00401a369b34cbff4868ea5704">
+                    <code>git config list --type=&lt;type&gt;</code></a>
+            </div>
+            <p>
+                Config listings can now canonicalize each value as a requested type,
+                such as a boolean, integer, path, expiry date, or color, while omitting
+                values that do not parse as that type.
+                <i>Git v2.54.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/c44beea485f0f2feaf460e2ac87fdd5608d63cf0...c32aa72466ec9da5762ef56f70ec10b42cab65da">
+                    <code>git sparse-checkout clean</code></a>
+            </div>
+            <p>
+                This new subcommand removes worktree files outside the sparse-checkout
+                definition so sparse directories can collapse again. Force, dry-run,
+                and verbose modes protect important files and explain what prevents a
+                directory from being removed.
+                <i>Git v2.52.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/6c0bd1fc70efaf053abe4e57c976afdc72d15377...e918917360817e7bb58baae2bc166998ffdc8726">
+                    More control over Scalar clones and maintenance</a>
+            </div>
+            <p>
+                Scalar users can skip tag downloads when cloning and choose whether
+                clone, register, and reconfigure operations enable scheduled maintenance.
+                Background maintenance also tells credential helpers that they are
+                running non-interactively, preventing helpers from blocking on UI.
+                <i>Git v2.47.0 and v2.50.0</i>
+
+                <ul>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/2e7b89e038c0c888acf61f1b4ee5a43d4dd5e94c...ce31b82ca95ba13aba424a1e3d09a292637f6f1d">
+                                Add <code>scalar clone --no-tags</code>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link">
+                            <a href="https://github.com/git/git/compare/e29e5cf288141a51823bbd6d2da90105c42a10c1...b9183b0a02c59d86b6d9e4e0da996c8909ed6fa8">
+                                Mark credentials as non-interactive during background maintenance
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/683c54c999c301c2cd6f715c411407c413b1d84e...6540560fd6c91091f6cf1eaedd034bc1827e1506">
+                    Configurable loose-object maintenance batches</a>
+            </div>
+            <p>
+                The <code>maintenance.loose-objects.batchSize</code> config option limits
+                how many loose objects are written into a packfile during each maintenance
+                run, avoiding oversized background jobs.
+                <i>Git v2.50.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.com/git/git/compare/8f8d6eee531b3fa1a8ef14f169b0cb5035f7a772...b4cf68476a983ff063846b43cd46ee9805f2c0bb">
+                    Alternate name-hash versions for packing</a>
+            </div>
+            <p>
+                The <code>--name-hash-version</code> option in
+                <code>git pack-objects</code> and <code>git repack</code> selects an
+                alternate path hash that reduces collisions among similarly named files
+                in different directories, improving delta-base selection and pack size.
+                <i>Git v2.49.0</i>
+            </p>
+        </li>
+        <li>
+            <div class="link">
                 <a href="https://github.com/git/git/compare/3dd2a2feca6e47b2931dadadad44f92a35e8cf51...4b707a6e99651b1ba7c8718f95ee57c6721c85d6">
                     <code>git for-each-ref</code> and the <code>is-base</code> token
 		</a>
