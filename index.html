@@ -975,6 +975,202 @@
     <ul class="list">
         <li>
             <div class="link">
+                <a href="https://git.github.io/rev_news/2026/08/31/edition-138/">
+                    Git Rev News 138 (August 31st, 2026)</a>
+            </div>
+            <p>
+                Features my review of merge-base performance improvements involving
+                commit-graph generation numbers, <code>paint_down_to_common()</code>,
+                and <code>ahead_behind()</code> in a 2.6-million-commit monorepo.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://www.jvt.me/posts/2026/08/25/git-rebase-update-refs/">
+                    Updating dependent branches when rebasing, automagically</a>
+            </div>
+            <p>
+                Explains <code>git rebase --update-refs</code> and demonstrates how
+                it simplifies updating stacked branches and pull requests.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://git.github.io/rev_news/2026/06/30/edition-136/">
+                    Git Rev News 136 (June 30th, 2026)</a>
+            </div>
+            <p>
+                Covers my detailed review of a batch-prefetching series designed to
+                avoid hundreds of individual blob downloads in partial clones.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://git.github.io/rev_news/2026/05/31/edition-135/">
+                    Git Rev News 135 (May 31st, 2026)</a>
+            </div>
+            <p>
+                Discusses my investigation of multi-pack-index version 2 compatibility
+                and the interaction between fallback behavior and background maintenance.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://git.github.io/rev_news/2025/09/30/edition-127/">
+                    Git Rev News 127 (September 30th, 2025)</a>
+            </div>
+            <p>
+                Quotes my explanation of <code>git backfill</code>, its role in
+                blobless partial clones, its limitations for treeless clones, and
+                how Scalar configures large repositories.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://about.gitlab.com/blog/supercharge-your-git-workflows/">
+                    Supercharge your Git workflows</a>
+            </div>
+            <p>
+                Compares clone-acceleration strategies for large repositories and
+                contrasts the Git Much Faster script with Scalar.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.blog/open-source/git/highlights-from-git-2-51/">
+                    Highlights from Git 2.51</a>
+            </div>
+            <p>
+                Discusses path-walk packing and cruft-free multi-pack-indexes,
+                including measurements of repository size improvements.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://about.gitlab.com/blog/reduce-the-load-on-gitlab-gitaly-with-bundle-uri/">
+                    Reduce the load on GitLab Gitaly with bundle URI</a>
+            </div>
+            <p>
+                Describes a production deployment of bundle URIs, including the
+                architecture, configuration, and reduction in clone load.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://andrewlock.net/working-with-stacked-branches-in-git-part-2/">
+                    Working with stacked branches in Git, part 2</a>
+            </div>
+            <p>
+                Continues a detailed exploration of stacked branches and rebasing
+                workflows built around <code>git rebase --update-refs</code>.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://danielsada.tech/blog/carreer-part-7-how-office-moved-to-git-and-i-loved-devex/">
+                    Office Migration from Source Depot to Git</a>
+            </div>
+            <p>
+                Provides historical context for Microsoft's migration to Git and
+                the large-repository performance work that followed.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://git.github.io/rev_news/2025/05/31/edition-123/">
+                    Git Rev News 123 (May 31st, 2025)</a>
+            </div>
+            <p>
+                Follows my proposal for a global <code>--no-hooks</code> option and
+                the discussion that led instead to documenting
+                <code>core.hooksPath=/dev/null</code>.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://github.blog/open-source/git/highlights-from-git-2-49/">
+                    Highlights from Git 2.49</a>
+            </div>
+            <p>
+                Features my name-hash version 2 and <code>git backfill</code> work,
+                including packing measurements from Microsoft's Fluent UI repository.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://about.gitlab.com/blog/whats-new-in-git-2-49-0/">
+                    What's new in Git 2.49.0?</a>
+            </div>
+            <p>
+                Provides an independent explanation of name-hash version 2 and
+                <code>git backfill</code>.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://blog.gitbutler.com/going-down-the-rabbit-hole-of-gits-new-bundle-uri/">
+                    Going down the rabbit hole of Git's new bundle-uri</a>
+            </div>
+            <p>
+                Investigates bundle URI behavior with a large repository, including
+                clone benchmarks, protocol details, and limitations.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://dev.to/playfulprogramming/using-git-maintenance-in-github-actions-optimize-your-repositories-automatically-39ka">
+                    Using Git Maintenance in GitHub Actions</a>
+            </div>
+            <p>
+                Demonstrates how to use <code>git maintenance</code> in CI to
+                optimize repositories automatically.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://dev.to/playfulprogramming/optimizing-your-repository-for-speed-and-efficiency-5co2">
+                    Optimizing Your Repository for Speed and Efficiency</a>
+            </div>
+            <p>
+                Explains the performance problems addressed by
+                <code>git maintenance</code> and how its maintenance tasks improve
+                repository performance.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://www.jonathancreamer.com/how-we-shrunk-our-git-repo-size-by-94-percent/">
+                    How we shrunk our Javascript monorepo git size by 94%</a>
+            </div>
+            <p>
+                Discusses my investigation of Microsoft's 1JS repository and the
+                path-walk packing improvements that reduced a repacked repository
+                from 178 GB to approximately 5 GB.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://alchemists.io/articles/git_for_each_ref">
+                    Git For Each Ref</a>
+            </div>
+            <p>
+                Demonstrates the <code>%(is-base:&lt;committish&gt;)</code> token
+                as a way to infer a branch's likely parent and construct commit ranges.
+            </p>
+        </li>
+        <li>
+            <div class="link">
+                <a href="https://blog.gitbutler.com/git-tips-3-really-large-repositories/">
+                    Git Tips 3: Really Large Repositories and Monorepos</a>
+            </div>
+            <p>
+                Surveys Microsoft's Git-at-scale work, including VFS for Git, Scalar,
+                background maintenance, commit-graph, partial clone, sparse-checkout,
+                and filesystem monitoring.
+            </p>
+        </li>
+        <li>
+            <div class="link">
                 <a href="https://github.blog/open-source/git/highlights-from-git-2-47/#quickly-find-base-branches-with-for-each-ref">
 				Highlights from Git 2.47
 			</a>
